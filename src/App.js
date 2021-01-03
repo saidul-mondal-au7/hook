@@ -40,6 +40,12 @@ function App() {
     })
   }
 
+  const deletePersonHandler = (personIndex) => {
+     const persons = [...personState.persons]
+     persons.splice(personIndex, 1)
+     personFunc({ persons })
+  }
+
   const style = {
     backgroundColor : "white",
     font : "inherit",
@@ -54,6 +60,7 @@ function App() {
     persons = (
       personState.persons.map((person) => {
         return <Person 
+        click = {deletePersonHandler}
         change={(event)=>switchNameHandler(event, person.id)} 
         key={person.id} 
         name={person.name} 
